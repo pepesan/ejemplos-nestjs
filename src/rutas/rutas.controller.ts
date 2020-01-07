@@ -13,7 +13,7 @@ export class RutasController {
   // Ruta patrón
   @Get('ab*cd')
   findAll() {
-    return 'post /rutas/abcd';
+    return 'get /rutas/abcd';
   }
   // Ruta con parámetro
   @Get('param/:id')
