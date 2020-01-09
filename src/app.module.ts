@@ -8,6 +8,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { OrmModule } from './orm/orm.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { MongoModule } from './mongo/mongo.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { MongoModule } from './mongo/mongo.module';
     OrmModule,
     MongooseModule.forRoot('mongodb://localhost/test'),
     MongoModule,
+    AuthModule,
   ],
   controllers: [AppController, RutasController, PayloadController],
   providers: [AppService],
