@@ -11,7 +11,7 @@ export class PhotoController {
     return this.photoService.findAll();
   }
   @Post()
-  async create(@Body() photo: Photo): Promise<Photo> {
+  create(@Body() photo: Photo): Promise<Photo> {
     return this.photoService.save(photo);
   }
 
@@ -23,6 +23,7 @@ export class PhotoController {
   @Put(':id')
   async update(@Param('id') id: number, @Body() photo: Photo): Promise<Photo> {
     await this.photoService.findById(id);
+    photo.id = id;
     return this.photoService.save(photo);
   }
 
