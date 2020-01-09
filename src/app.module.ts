@@ -15,7 +15,7 @@ import { AuthModule } from './auth/auth.module';
     ServiciosModule,
     TypeOrmModule.forRoot(),
     OrmModule,
-    MongooseModule.forRoot('mongodb://localhost/test'),
+    MongooseModule.forRoot('mongodb://localhost/test',{ useNewUrlParser: true, useUnifiedTopology: true }),
     MongoModule,
     AuthModule,
   ],
