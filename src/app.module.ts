@@ -15,11 +15,14 @@ import { AuthModule } from './auth/auth.module';
     ServiciosModule,
     TypeOrmModule.forRoot(),
     OrmModule,
-    MongooseModule.forRoot('mongodb://localhost/test',{ useNewUrlParser: true, useUnifiedTopology: true }),
+    MongooseModule.forRoot('mongodb://localhost/test', { useNewUrlParser: true, useUnifiedTopology: true }),
     MongoModule,
     AuthModule,
   ],
-  controllers: [AppController, RutasController, PayloadController],
+  controllers: [
+    AppController,
+    RutasController,
+    PayloadController],
   providers: [AppService],
 })
 export class AppModule {}

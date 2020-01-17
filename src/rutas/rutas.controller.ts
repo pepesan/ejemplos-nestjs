@@ -1,4 +1,11 @@
-import { Controller, Get, HttpCode, Param, Post, Query, Redirect } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  HttpCode,
+  Param,
+  Post,
+  Query,
+  Redirect } from '@nestjs/common';
 
 @Controller('rutas')
 export class RutasController {
