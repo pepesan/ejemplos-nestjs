@@ -9,6 +9,7 @@ import { OrmModule } from './orm/orm.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { MongoModule } from './mongo/mongo.module';
 import { AuthModule } from './auth/auth.module';
+import { SubmoduleOrmModule } from './submodule-orm/submodule-orm.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { AuthModule } from './auth/auth.module';
     MongooseModule.forRoot('mongodb://localhost/test', { useNewUrlParser: true, useUnifiedTopology: true }),
     MongoModule,
     AuthModule,
+    SubmoduleOrmModule,
   ],
   controllers: [
     AppController,

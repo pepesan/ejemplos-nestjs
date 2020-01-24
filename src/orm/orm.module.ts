@@ -19,7 +19,11 @@ import { Question } from './models/manytomany/question.entity';
       Book,
       Category,
       Question])],
-  exports: [TypeOrmModule],
+  /*
+    He tenido que incluir esto para exportar las entidades y
+    el servicio en otro módulo
+   */
+  exports: [TypeOrmModule, PhotoService],
   providers: [PhotoService],
   controllers: [PhotoController],
 })
