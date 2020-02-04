@@ -15,4 +15,20 @@ export class MongoService {
   async findAll(): Promise<Animal[]> {
     return await this.modelo.find().exec();
   }
+
+  async findById(id: string): Promise<Animal> {
+    return await this.modelo.findById(id);
+  }
+
+  async updateById(id: string, animal: Animal): Promise<Animal> {
+    const cambios = { name: animal.name, age: animal.age};
+    await this.modelo.updateOne({ _id : id }, cambios);
+    return await this.modelo.findById(id);
+  }
+
+  async delete(id: string): Promise<Animal> {
+    const animalG = await this.modelo.findById(id);
+    await this.modelo.findOneAndRemove({ _id : id });
+    return animalG;
+  }
 }
