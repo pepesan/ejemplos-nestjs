@@ -27,10 +27,23 @@ export class RutasController {
   findById(@Param() params) {
     return 'post /rutas/:id ' + params.id;
   }
+  // Ruta con parámetros
+  @Get('/:id/:name')
+  findByIdAndName(@Param() params) {
+    return 'post /params/:id ' + params.id + 'name: ' + params.name;
+  }
   // Ruta con parámetro nombrado
   @Post('param/:id')
   ModifyById(@Param('id') id: number) {
     return 'post /rutas/:id ' + id;
+  }
+  // Ruta con parámetro nombrado
+  @Post('param/:id/:name')
+  ModifyByIdAndName(
+    @Param('id') id: number,
+    @Param('name') name: string,
+  ) {
+    return 'post /rutas/:id ' + id + ' name: ' + name;
   }
   // Código de respuesta
   @Get('codigo')
