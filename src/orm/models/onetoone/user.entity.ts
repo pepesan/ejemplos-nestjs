@@ -9,6 +9,8 @@ export class User {
 
   @Column()
   name: string;
+  @Column()
+  surname: string;
 
   @OneToOne(type => Profile)
   @JoinColumn()

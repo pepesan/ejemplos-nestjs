@@ -1,34 +1,35 @@
 import { Model } from 'mongoose';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Animal } from './animal';
+import { Cat, CatDocument } from './schema';
+import { CreateCatDTO } from './cat';
 
 @Injectable()
 export class MongoService {
-  constructor(@InjectModel('Animal') private readonly modelo: Model<Animal>) {}
+  constructor(@InjectModel(Cat.name) private catModel: Model<CatDocument>) {}
 
-  async create(animal: Animal): Promise<Animal> {
-    const createdAnimal = new this.modelo(animal);
-    return await createdAnimal.save();
+  async create(createCatDto: CreateCatDTO): Promise<Cat> {
+    const createdCat = new this.catModel(createCatDto);
+    return createdCat.save();
   }
 
-  async findAll(): Promise<Animal[]> {
-    return await this.modelo.find().exec();
+  async findAll(): Promise<Cat[]> {
+    return this.catModel.find().exec();
   }
 
-  async findById(id: string): Promise<Animal> {
-    return await this.modelo.findById(id);
+  async findById(id: string): Promise<Cat> {
+    return this.catModel.findById(id);
   }
 
-  async updateById(id: string, animal: Animal): Promise<Animal> {
+  async updateById(id: string, animal: CreateCatDTO): Promise<Cat> {
     const cambios = { name: animal.name, age: animal.age};
-    await this.modelo.updateOne({ _id : id }, cambios);
-    return await this.modelo.findById(id);
+    await this.catModel.updateOne({ _id : id }, cambios);
+    return this.catModel.findById(id);
   }
 
-  async delete(id: string): Promise<Animal> {
-    const animalG = await this.modelo.findById(id);
-    await this.modelo.findOneAndRemove({ _id : id });
+  async delete(id: string): Promise<Cat> {
+    const animalG = await this.catModel.findById(id);
+    await this.catModel.findOneAndRemove({ _id : id });
     return animalG;
   }
 }
