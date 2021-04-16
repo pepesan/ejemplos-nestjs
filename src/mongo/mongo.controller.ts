@@ -1,6 +1,5 @@
 import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { MongoService } from './mongo.service';
-import { Photo } from '../orm/models/photo.entity';
 import { CreateCatDTO } from './cat';
 import { Cat } from './schema';
 
